@@ -1,0 +1,14 @@
+{
+  "name": "meow",
+  "version": "1.0.0",
+  "main": "lib/index.mjs",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "puppeteer": "^5.5.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
