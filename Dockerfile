@@ -1,10 +1,10 @@
 FROM node:14.15.0-slim
 
+WORKDIR /home/puppeteer
+
 # Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others)
 # Note: this installs the necessary libs to make the bundled version of Chromium that Puppeteer
 # installs, work.
-WORKDIR /home/puppeteer
-
 RUN apt-get update \
     && apt-get install -y wget gnupg \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -30,11 +30,13 @@ RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
 
 USER pptruser
 
-COPY package.json yarn.lock /home/puppeteer/
+COPY --chown=pptruser package.json yarn.lock /home/puppeteer/
 
 RUN yarn
 
-COPY . /home/puppeteer
+COPY --chown=pptruser . /home/puppeteer
+
+RUN chmod +x /home/puppeteer/entry.sh
 
 EXPOSE 3000
 
