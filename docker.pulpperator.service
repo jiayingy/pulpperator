@@ -1,0 +1,15 @@
+[Unit]
+Description=Pulpperator Service
+After=docker.service
+Requires=docker.service
+
+[Service]
+Restart=always
+ExecStartPre=-/usr/bin/docker stop pulpperator
+ExecStartPre=-/usr/bin/docker rm pulpperator
+ExecStartPre=/usr/bin/docker build -t pulpperator /efs/web/vendors/github/jiayingy/pulpperator-d7d2e94274134da310c020b07a068b50b89ae89a
+ExecStart=/usr/bin/docker run -p 3000:3000 --name pulpperator pulpperator
+ExecStop=/usr/bin/docker stop -t 2 pulpperator
+
+[Install]
+WantedBy=local.target
