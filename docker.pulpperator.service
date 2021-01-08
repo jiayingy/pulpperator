@@ -7,8 +7,8 @@ Requires=docker.service
 Restart=always
 ExecStartPre=-/usr/bin/docker stop pulpperator
 ExecStartPre=-/usr/bin/docker rm pulpperator
-ExecStartPre=/usr/bin/docker build -t pulpperator /efs/web/vendors/github/jiayingy/pulpperator-d7d2e94274134da310c020b07a068b50b89ae89a
-ExecStart=/usr/bin/docker run -p 3000:3000 --name pulpperator pulpperator
+ExecStartPre=/usr/bin/docker pull jiayingy/pulpperator:latest
+ExecStart=/usr/bin/docker run -p 3000:3000 --name pulpperator jiayingy/pulpperator
 ExecStop=/usr/bin/docker stop -t 2 pulpperator
 
 [Install]
