@@ -1,11 +1,12 @@
 {
   "name": "meow",
   "version": "0.1.0",
-  "main": "lib/index.mjs",
+  "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node lib/index.mjs",
-    "dev": "nodemon lib/index.mjs",
+    "start": "node lib/index.js",
+    "dev": "ts-node-dev src/index.ts",
+    "build": "tsc --build tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
