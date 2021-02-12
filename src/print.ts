@@ -1,9 +1,9 @@
-import puppeteer from 'puppeteer';
+import puppeteer, { SetCookie } from 'puppeteer';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import fs from 'fs';
 
-function deleteUserDataDir(dirPath) {
+function deleteUserDataDir(dirPath: string) {
   fs.rmdirSync(dirPath, {
     recursive: true,
     maxRetries: 5,
@@ -11,7 +11,7 @@ function deleteUserDataDir(dirPath) {
   });
 }
 
-export const print = async (url, cookies) => {
+export const print = async (url: string, cookies: SetCookie[]) => {
   let browser = null;
   let page = null;
   const userDataDir = path.resolve(`temp/puppeteer/${uuidv4()}`);
