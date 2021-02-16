@@ -1,5 +1,5 @@
 import express from 'express';
-import { print } from './print.mjs';
+import { print } from './print';
 
 const app = express();
 app.use(express.json());

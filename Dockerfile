@@ -36,6 +36,8 @@ RUN yarn
 
 COPY --chown=pptruser . /home/puppeteer
 
+RUN yarn build
+
 RUN chmod +x /home/puppeteer/entry.sh
 
 EXPOSE 3000
